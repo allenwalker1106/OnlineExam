@@ -1,0 +1,32 @@
+{
+  "name": "onlineexam",
+  "version": "1.0.0",
+  "description": "turtlebot3 autorace simulation packageOnline Exam",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allenwalker1106/OnlineExam.git"
+  },
+  "author": "Allen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allenwalker1106/OnlineExam/issues"
+  },
+  "homepage": "https://github.com/allenwalker1106/OnlineExam#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.7.2",
+    "express": "^4.17.1",
+    "mongodb": "^3.3.4",
+    "mongoose": "^5.7.11",
+    "nodemon": "^1.19.4",
+    "path": "^0.12.7"
+  }
+}
