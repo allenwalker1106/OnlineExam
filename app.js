@@ -2,7 +2,25 @@ const express = require('express');
 const app = express();
 const path=require('path');
 const bodyParser = require('body-parser')
-const mongoURI='mongodb://localhost:27017';
+const MongoConnector = require('./mongodbQuery.js').MongoConnector;
+const Schema = require('./mongodbQuery.js').Schema;
+const DBProcedure = require('./mongodbQuery.js').DBProcedure;
+
+MongoConnector.connect('mongodb://localhost:27017/media');
+
+const testdata={
+    user_info: {
+        name: { firstName: 'asd', middleName: 'asdasd', lastName: 'asdasd' },
+        username: 'asdsssasd',
+        password: 'asdasssd',
+        email: 'asddddasdasd@gmail.com',
+        date_of_birth: '2019-11-10',
+        gender: { male: 'on' },
+        account_type: { taker: 'on' },
+        country: 'Armenia'
+    } 
+};
+
 const PORT = 3000;
 app.use(express.static("public"));
 app.set('port',PORT);
@@ -17,7 +35,25 @@ app.get('/',(req,res)=>{
 });
 
 app.post('/signup',(req,res)=>{
-    console.log(req.body);
+    // DBProcedure.userSignup(req.body);
+    DBProcedure.showAllUser();
+    res.redirect('/')
+})
+
+app.get('/test',(req,res)=>{
+    // DBProcedure.userSignup(req.body);
+    DBProcedure.userSignup(testdata);
+    res.redirect('/');
+})
+
+app.get('/show',(req,res)=>{
+    
+    DBProcedure.showAllUser();
+    res.redirect('/');
+})
+
+app.get('/v',(req,res)=>{
+    DBProcedure.validateSignup(testdata);
     res.redirect('/');
 })
 

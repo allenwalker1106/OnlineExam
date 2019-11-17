@@ -77,7 +77,7 @@
                                 <div class="form-row">
                                     <div class="col-md-4 mb-3">
                                         <label for="firstNameValidation" class="flb">First name <span style="color: red;">*</span></label>
-                                        <input type="text" class="form-control" id="firstNameValidation" name="info[firstname]" placeholder="First name" required>
+                                        <input type="text" class="form-control" id="firstNameValidation" name="user_info[name][firstName]" placeholder="First name" required>
                                         <div class="valid-feedback">
                                                 Valid!
                                         </div>
@@ -85,11 +85,11 @@
                                     
                                     <div class = "col">
                                             <label for="middleNameValidation" class="flb">Middle name</label>
-                                            <input type="text" class="form-control" id="middleNameValidation" name="info[middlename]" placeholder="Middle name"> 
+                                            <input type="text" class="form-control" id="middleNameValidation" name="user_info[name][middleName]" default="" placeholder="Middle name"> 
                                     </div>
                                     <div class = "col-md-4 mb-3">
                                         <label for="lastNameValidation" class="flb">Last name <span style="color: red;">*</span></label>
-                                        <input type="text" class="form-control" id="lastNameValidation" name="info[lastname]" placeholder="Last name" required> 
+                                        <input type="text" class="form-control" id="lastNameValidation" name="user_info[name][lastName]" placeholder="Last name" required> 
                                         <div class="valid-feedback">
                                             Valid!
                                         </div>
@@ -98,14 +98,14 @@
                                 <div class="form-row">
                                     <div class="col-md-4 mb-3">
                                         <label for="usernameValidation"  class="flb">User name <span style="color: red;">*</span></label>
-                                        <input type="text" class="form-control" id="username" name="info[username]" placeholder="User Name" required>
+                                        <input type="text" class="form-control" id="username" name="user_info[username]" placeholder="User Name" required>
                                         <div class="valid-feedback">
                                             Valid
                                         </div>
                                     </div>
                                     <div class="col-md mb-3">
                                             <label for="passwordValidation" class="flb">Password <span style="color: red;">*</span></label>
-                                            <input type="password" class="form-control" id="password" name="info[password]" placeholder="Password" required>
+                                            <input type="password" class="form-control" id="password" name="user_info[password]" placeholder="Password" required>
                                             <div class="valid-feedback">
                                                 Valid
                                             </div>
@@ -113,14 +113,14 @@
                                 </div>
                                 <div class="form-row">
                                     <label class="flb" for="emailValidation">Email <span style="color: red;">*</span></label>
-                                    <input type="email" class="form-control" id="emailValidation" name="info[email]" placeholder="example@gmail.com" required>
+                                    <input type="email" class="form-control" id="emailValidation" name="user_info[email]" placeholder="example@gmail.com" required>
                                     <div class="valid-feedback">
                                         Valid!
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <label class="flb" for="dateValidation">Date Of Birth <span style="color: red;">*</span></label>
-                                    <input type="date" class="form-control" id="dateValidation" name="info[date]" required>
+                                    <input type="date" class="form-control" id="dateValidation" name="user_info[date_of_birth]" required>
                                     <div class="valid-feedback">
                                         Valid!
                                     </div>
@@ -130,15 +130,15 @@
                                 </div>
                                 
                                 <div class="form-check form-check-inline ">
-                                    <input type="radio" class="form-check-input" id="male" name="info[gender][male]"> 
+                                    <input type="radio" class="form-check-input" id="male" name="user_info[gender][male]"> 
                                     <label class=" flb" for="male">Male</label>
                                 </div>
                                 <div class="form-check form-check-inline ">
-                                    <input type="radio" class="form-check-input" id="female" name="info[gender][female]">
+                                    <input type="radio" class="form-check-input" id="female" name="user_info[gender][female]">
                                     <label class=" flb" for="female">Female</label>
                                 </div>
                                 <div class="form-check form-check-inline " >
-                                    <input type="radio" class="form-check-input" id="other_gender" name="info[gender][other]">
+                                    <input type="radio" class="form-check-input" id="other_gender" name="user_info[gender][other]">
                                     <label class=" flb" for="other_gender">Other</label>
                                 </div>
                                 <div class="form-row">
@@ -147,18 +147,18 @@
                                 
                                 <div class="form-row" id="roles" required>
                                     <div class="form-check form-check-inline " >
-                                        <input type="radio" class="form-check-input " id="taker" name="info[role][taker]"> 
+                                        <input type="radio" class="form-check-input " id="taker" name="user_info[account_type][taker]"> 
                                         <label class=" flb" for="taker">Test taker</label>
                                     </div>
 
                                     <div class="form-check form-check-inline " >
-                                        <input type="radio" class="form-check-input" id="administrator" name="info[role][administrator]"> 
+                                        <input type="radio" class="form-check-input" id="administrator" name="user_info[account_type][administrator]"> 
                                         <label class=" flb" for="male">Administrator</label>
                                     </div>    
                                 </div>
                                 <div class="form-row">
                                     <label class="flb" for="countryValidation" >Country <span style="color: red;">*</span></label>
-                                    <select name="info[country]" class="form-control" id="countryValidation" required> 
+                                    <select name="user_info[country]" class="form-control" id="countryValidation" required> 
                                             <option value="" selected="selected">Select Country</option> 
                                             <option value="United States">United States</option> 
                                             <option value="United Kingdom">United Kingdom</option> 
