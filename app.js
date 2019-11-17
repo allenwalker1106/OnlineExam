@@ -8,12 +8,13 @@ const DBProcedure = require('./mongodbQuery.js').DBProcedure;
 
 MongoConnector.connect('mongodb://localhost:27017/media');
 
+
 const testdata={
     user_info: {
-        name: { firstName: 'asd', middleName: 'asdasd', lastName: 'asdasd' },
-        username: 'asdsssasd',
-        password: 'asdasssd',
-        email: 'asddddasdasd@gmail.com',
+        name: { firstName: 'asssd', middleName: 'asdasd', lastName: 'asdasd' },
+        username: 'allen',
+        password: '123',
+        email: 'asddddddssasdddasdasd@gmail.com',
         date_of_birth: '2019-11-10',
         gender: { male: 'on' },
         account_type: { taker: 'on' },
@@ -30,32 +31,72 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/',(req,res)=>{
     res.render('home');
-    // res.sendFile(__dirname+'/public/views/login.html');
-    // console.log('')
 });
 
-app.post('/signup',(req,res)=>{
-    // DBProcedure.userSignup(req.body);
-    DBProcedure.showAllUser();
-    res.redirect('/')
+app.get('/help',(req,res)=>{
+    res.render('help');
 })
 
+app.get('/howitwork',(req,res)=>{
+    res.render('howitwork');
+})
+
+app.get('/signin',(req,res)=>{
+    res.render('signin',{user:{username:""}});
+})
+
+
+app.post('/signup',(req,res)=>{
+    DBProcedure.userSignup(req.body);
+    res.redirect('/signin')
+})
+
+
+
+app.post('/signinAccount',(req,res)=>{
+    console.log(req.body);
+    DBProcedure.getUser(req.body).countDocuments().exec((err,result)=>{
+        if(err) throw err;
+        if(result!=1){
+            console.log({username:req.body.user_info.username});
+            res.render('signin',{user:{username:req.body.user_info.username}});
+            
+        }
+        else{
+            DBProcedure.getUser(req.body).exec((err,result)=>{
+                if(err) throw err;
+                console.log(result);
+                res.render('front_page',{user:result});
+            })
+        }
+    });
+})
+
+
+
+
+
+
+
+
+
+
+
+
 app.get('/test',(req,res)=>{
-    // DBProcedure.userSignup(req.body);
-    DBProcedure.userSignup(testdata);
-    res.redirect('/');
+    DBProcedure.getUser(testdata).exec((err,result)=>{
+        if(err) throw err;
+        console.log(req.body);
+        res.render('home',{user:result});
+    
+    })
 })
 
 app.get('/show',(req,res)=>{
-    
-    DBProcedure.showAllUser();
-    res.redirect('/');
+    DBProcedure.getUser(testdata)
+    // res.redirect('/');
 })
 
-app.get('/v',(req,res)=>{
-    DBProcedure.validateSignup(testdata);
-    res.redirect('/');
-})
 
 app.listen(PORT,()=>{
     console.log('App running on port' + PORT.toString());
